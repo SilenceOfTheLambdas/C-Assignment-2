@@ -25,5 +25,5 @@ int main()
     catch (NoMarkException e)
     { cout << "No mark for CE204" << endl;
     }
-    cout << "Average mark (which should be 52.5) is " << s.getAverageMark() << endl;
+    cout << "Average mark (which should be 52.5) is " << s.getAverageMark() << endl;    
 }
