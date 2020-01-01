@@ -32,3 +32,7 @@ float Student::getMark(const string &module) const {
     }
 }
 
+ostream &operator<<(ostream &str, const Student &s) {
+
+}
+
