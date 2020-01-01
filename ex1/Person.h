@@ -6,12 +6,13 @@
 using namespace std;
 
 class Person
-{   public:
-        Person(const string &name);
-	   string getName() const;
-	   void changeName(const string &newName);
-    protected:
-	   string name;
+{   
+	public:
+		Person(const string &name);
+	   	string getName() const;
+	   	void changeName(const string &newName);
+	protected:
+	   	string name;
 };
 
 #endif

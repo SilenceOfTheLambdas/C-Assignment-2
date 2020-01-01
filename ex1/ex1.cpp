@@ -7,8 +7,9 @@ using namespace std;
 #include "Student.h"
 
 int main()
-{   Student s("Harry Potter", 12345);
-    s.changeName("Harriet Potter");
+{   
+    Student s("Bruh Moment", 12345);
+    s.changeName("Bongis Momento");
     cout << "Name is " << s.getName() << endl;
     cout << "Reg is " << s.getRegNo() << endl;
     s.addMark("CE151", 99.5);
@@ -25,5 +26,5 @@ int main()
     catch (NoMarkException e)
     { cout << "No mark for CE204" << endl;
     }
-    cout << "Average mark (which should be 52.5) is " << s.getAverageMark() << endl;    
+    cout << "Average mark (which should be 52.5) is " << s.getAverageMark() << endl;
 }
