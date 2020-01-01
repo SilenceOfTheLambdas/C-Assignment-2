@@ -21,10 +21,10 @@ int main()
     { cout << "No mark for CE151" << endl;
     }
     try
-    { cout << "Mark for CE204 is " << s.getMark("CE204") << endl;
+    { cout << "Mark for CE221 is " << s.getMark("CE221") << endl;
     }
     catch (NoMarkException e)
     { cout << "No mark for CE204" << endl;
     }
-    cout << "Average mark (which should be 52.5) is " << s.getAverageMark() << endl;
+    // cout << "Average mark (which should be 52.5) is " << s.getAverageMark() << endl;
 }

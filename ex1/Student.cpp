@@ -2,10 +2,9 @@
 
 using namespace std;
 
-Student::Student(const string &name, int regNo) {
+Student::Student(const string &name, int regNo): Person(name) {
     this->name = name;
     this->regNo = regNo;
-
     marks.clear();
 }
 
