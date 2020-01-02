@@ -7,7 +7,10 @@ using namespace std;
 #include <fstream>
 #include <vector>
 #include <sstream>
+#include <iterator>
 #include "Student.h"
+
+vector<Student> students;
 
 int main()
 {
@@ -27,16 +30,27 @@ int main()
 
             /* Running loop till the end of the stream */
             string temp;
+            string foundName;
             int found;
             while (!ss.eof()) {
-
                 /* extracting word by word from stream */
                 ss >> temp;
+                int regID = 0;
+                string name;
 
                 /* Checking the given word is integer or not */
-                if (stringstream(temp) >> found)
-                    cout << found << " ";
+                if (stringstream(temp) >> found) {
+                    regID = found;
+                } else if (stringstream(temp) >> foundName) {
+                    name = foundName;
+                }
 
+                if (!(name.empty())) {
+                    Student s(name, regID); // create a new student
+                    s.addMark("CE202", 76.5);
+                    cout << s.getName() << endl;
+                    students.push_back(s); // Add the new student to the students vector
+                }
                 /* To save from space at the end of string */
                 temp = "";
             }
@@ -44,24 +58,4 @@ int main()
     } else {
         cout << "File not found: " << filename << endl;
     }
-
-//    Student s("Bruh Moment", 12345);
-//    s.changeName("Bongis Momento");
-//    cout << "Name is " << s.getName() << endl;
-//    cout << "Reg is " << s.getRegNo() << endl;
-//    s.addMark("CE151", 99.5);
-//    s.addMark("CE221", 5.5);
-//    try
-//    { cout << "Mark for CE151 is " << s.getMark("CE151") << endl;
-//    }
-//    catch (NoMarkException e)
-//    { cout << "No mark for CE151" << endl;
-//    }
-//    try
-//    { cout << "Mark for CE221 is " << s.getMark("CE221") << endl;
-//    }
-//    catch (NoMarkException e)
-//    { cout << "No mark for CE204" << endl;
-//    }
-//    // cout << "Average mark (which should be 52.5) is " << s.getAverageMark() << endl;
 }
