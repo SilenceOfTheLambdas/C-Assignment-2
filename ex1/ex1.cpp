@@ -11,9 +11,16 @@ using namespace std;
 #include "Student.h"
 
 vector<Student> students;
+vector<string> lines;
+
+void createStudents();
 
 int main()
 {
+    createStudents();
+}
+
+void createStudents() {
     string filename;
     cout << "Please specify the filename for the student data: ";
     cin >> filename;
@@ -21,41 +28,24 @@ int main()
     ifstream file(filename);
     string line;
     if (file.is_open()) {
-        while (getline(file, line, '\n')) {
-
-            stringstream ss;
-
-            /* Storing the whole string into string stream */
-            ss << line;
-
-            /* Running loop till the end of the stream */
-            string temp;
-            string foundName;
-            int found;
-            while (!ss.eof()) {
-                /* extracting word by word from stream */
-                ss >> temp;
-                int regID = 0;
-                string name;
-
-                /* Checking the given word is integer or not */
-                if (stringstream(temp) >> found) {
-                    regID = found;
-                } else if (stringstream(temp) >> foundName) {
-                    name = foundName;
-                }
-
-                if (!(name.empty())) {
-                    Student s(name, regID); // create a new student
-                    s.addMark("CE202", 76.5);
-                    cout << s.getName() << endl;
-                    students.push_back(s); // Add the new student to the students vector
-                }
-                /* To save from space at the end of string */
-                temp = "";
-            }
+        while (file >> line) {
+            lines.push_back(line);
         }
-    } else {
-        cout << "File not found: " << filename << endl;
     }
+    else {
+        cout << "File not found: " << filename << endl;
+    }  file.close();
+
+    /************************************************/
+    /*  Creating Students                           */
+    for (int regNo = 0; regNo < lines.size(); regNo += 3) {
+        int name = regNo + 1;
+        int reg = stoi(lines.at(regNo));
+        string fullname = lines.at(name) + " " + lines.at(name + 1);
+        if (name != regNo) {
+            cout << reg << "|" << fullname << endl;
+            Student c(fullname, reg);
+        }
+    }
+    /************************************************/
 }
