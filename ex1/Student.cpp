@@ -1,4 +1,9 @@
+/**
+ * @author Callum-James Smith (1804096)
+ * @date 31st December 2019 @ 10:08:51pm
+ */
 #include <iostream>
+#include <iomanip>
 #include "Student.h"
 
 using namespace std;
@@ -34,36 +39,32 @@ float Student::getMark(const string &module) const {
 }
 
 ostream &operator<<(ostream &str, const Student &s) {
-//    This will show a students average, max and min marks for all modules, along with their name and regNo
+/**
+* @param &str the ostream output
+* @param &s the student object
+*/
     /*********************************************/
     /*  Calculate Averages                       */
     /********/
-    float minMark;
-    float maxMark;
+    float minMark = 9999;
+    float maxMark = 0;
     float averageMark = 0;
     /*******/
-    try {
-        /* Min */
-        float tmp = 9999.99; // some really big value
-        for (auto & mark : s.marks) {
-            if (mark.second < tmp) tmp = mark.second;
-        }  minMark = tmp;
-
-        /* Max */
-        float tmp2 = 0;
-        for (auto & mark : s.marks) {
-            if (mark.second > tmp2) tmp2 = mark.second;
-        } maxMark = tmp2;
-
-        /* Average */
-        for (auto & mark : s.marks) {
-            averageMark += mark.second / s.marks.size();
-        }
-    } catch (NoMarkException e) {
-        string output = "Name: " + s.getName() + " " + to_string( s.getRegNo()) + " has no marks. " + "\n";
+//     TODO: Setup the output to it looks better
+    if (s.marks.empty()) { // if the student has no marks
+        str << "Name: " << s.getName() << " " << to_string( s.getRegNo()) << " Student has no marks" << endl;
     }
-    string output = "Name: " + s.getName() + " " + to_string( s.getRegNo()) + "min: " + to_string(minMark)
-            + " max: " + to_string(maxMark) + " average: " + to_string(averageMark) + "\n";
-    return str  << output;
+    else { // if the student does have at least 1 mark
+        for (auto & mark : s.marks) {
+            if (minMark > mark.second) minMark = mark.second; // Min
+            if (mark.second > maxMark) maxMark = mark.second; // Max
+            averageMark = s.marks.size() == 1 ? mark.second : (averageMark += mark.second) / s.marks.size(); // Average
+        }
+        str << "Name: " << s.getName() << " " << to_string( s.getRegNo()) << " min: " << to_string(minMark)
+        << " max: " << to_string(maxMark) << " average: " << to_string(averageMark) << endl;
+    }
+        
+    return str; // return the ostream
+    /*********************************************/
 }
 

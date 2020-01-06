@@ -1,15 +1,11 @@
 // temporary main function to allow testing of Student class
 // this file should not be submitted as part of the assignment
 
-using namespace std;
 #include <iostream>
 #include <stdexcept>
 #include <algorithm>
 #include <fstream>
 #include <vector>
-#include <sstream>
-#include <iterator>
-#include "Student.h"
 #include "Student.h"
 
 vector<Student> students; // The vector of student objects
@@ -17,13 +13,13 @@ vector<string> lines; // The lines of the file being read
 
 void createStudents();
 void updateMarks();
+void printModuleMarks(const vector<Student> &, float);
 
 int main()
 {
     createStudents();
     updateMarks();
-    
-//     cout << printModuleMarks() << endl
+    printModuleMarks(students, 80);
     
     return 0;
 }
@@ -58,7 +54,6 @@ void createStudents() {
         string fullname = lines.at(name) + " " + lines.at(name + 1);
         if (name != regNo) {
             Student c(fullname, reg);
-            cout << reg << " | " << fullname << endl; // TODO: Remove before release
             students.push_back(c); // Add the new student into the students vector
         }
     }
@@ -68,6 +63,7 @@ void createStudents() {
 void updateMarks() {
     /************************************************/
     /*      Read File                               */
+    
     A:
     lines.clear(); // Reset the lines vector
     string filename;
@@ -90,41 +86,43 @@ void updateMarks() {
 
     /************************************************/
     /*      Assign Marks                            */
-    string module;
-    int regID;
-    float mark;
+    
+    string module; // hold the module code
+    int regID; // he student's ID
+    float mark; // The mark they obtained
+    
+    bool found;
     for (int moduleNo = 0; moduleNo < lines.size(); moduleNo += 3) {
         module = lines.at(moduleNo); // The module number
-        int r = moduleNo + 1;
-        int s = r + 1;
+        int r = moduleNo + 1; // temp student ID
+        int s = r + 1; // temp mark
 
         regID = stoi(lines.at(r)); // Student registration ID
         mark = stof(lines.at(s)); // The mark a student got for that module
-    }
-    /* Check to see if the student exists within the students vector */
-    bool found = true;
-    for (auto & student : students) {
-        if (regID != student.getRegNo()) {
-            found = false;
-        }
-        else if (regID == student.getRegNo()) {
-            student.addMark(module, mark);
-        } 
-        cout << student.getName() << " " << student.getRegNo() << endl;
+        /* Check to see if the student exists within the students vector */
+        found = true;
+        for (auto & student : students) {
+            found = true;
+            if (student.getRegNo() == regID) {
+                student.addMark(module, mark);
+            } else {
+                found = false;
+            }
+        }   
+        /************************************************/
     }
     if (!(found)) {
-        cout << "One or more students were not found!" << endl;
+            cout << "One or more students were not found!" << endl;
     }
-        
-    /************************************************/
 }
 
-ostream printModuleMarks(const vector<Student> &studs, float &marks) {
+void printModuleMarks(const vector<Student> &studs, float marks) {
     /**
      * @param &studs a vector that contains a list of student objects
      * @param &marks a float attaining to the mark of that module
      */
-//     TODO: Figure out how to use the operator<< function
-    
+    for (auto & student : studs) {
+        cout << student;
+    }
 }
 
