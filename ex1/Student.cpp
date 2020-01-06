@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Student.h"
 
 using namespace std;
@@ -33,6 +34,36 @@ float Student::getMark(const string &module) const {
 }
 
 ostream &operator<<(ostream &str, const Student &s) {
+//    This will show a students average, max and min marks for all modules, along with their name and regNo
+    /*********************************************/
+    /*  Calculate Averages                       */
+    /********/
+    float minMark;
+    float maxMark;
+    float averageMark = 0;
+    /*******/
+    try {
+        /* Min */
+        float tmp = 9999.99; // some really big value
+        for (auto & mark : s.marks) {
+            if (mark.second < tmp) tmp = mark.second;
+        }  minMark = tmp;
 
+        /* Max */
+        float tmp2 = 0;
+        for (auto & mark : s.marks) {
+            if (mark.second > tmp2) tmp2 = mark.second;
+        } maxMark = tmp2;
+
+        /* Average */
+        for (auto & mark : s.marks) {
+            averageMark += mark.second / s.marks.size();
+        }
+    } catch (NoMarkException e) {
+        string output = "Name: " + s.getName() + " " + to_string( s.getRegNo()) + " has no marks. " + "\n";
+    }
+    string output = "Name: " + s.getName() + " " + to_string( s.getRegNo()) + "min: " + to_string(minMark)
+            + " max: " + to_string(maxMark) + " average: " + to_string(averageMark) + "\n";
+    return str  << output;
 }
 
