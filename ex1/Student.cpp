@@ -40,6 +40,7 @@ float Student::getMark(const string &module) const {
 
 ostream &operator<<(ostream &str, const Student &s) {
 /**
+ * This function implements the << operator and allows for the output of student information.
 * @param &str the ostream output
 * @param &s the student object
 */
@@ -52,7 +53,7 @@ ostream &operator<<(ostream &str, const Student &s) {
     /*******/
 //     TODO: Setup the output to it looks better
     if (s.marks.empty()) { // if the student has no marks
-        str << "Name: " << s.getName() << " " << to_string( s.getRegNo()) << " Student has no marks" << endl;
+        str << "Name: " << s.getName() << " " << to_string( s.getRegNo()) << "________Student has no marks________" << endl;
     }
     else { // if the student does have at least 1 mark
         for (auto & mark : s.marks) {

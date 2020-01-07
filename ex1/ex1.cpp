@@ -1,6 +1,3 @@
-// temporary main function to allow testing of Student class
-// this file should not be submitted as part of the assignment
-
 #include <iostream>
 #include <stdexcept>
 #include <algorithm>
