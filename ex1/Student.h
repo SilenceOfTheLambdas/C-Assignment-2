@@ -28,6 +28,12 @@ class Student: public Person
 		// method to retrieve the mark for a module
 		// should throw NoMarkException if student has no mark for that module
 		float getMark(const string &module) const;
+        
+        /*************************/
+        /*  Custom functions     */
+//         This function provides the functionality to sort marks
+        bool sortMinMarks(float mark) const;
+        /*************************/
 
 	private:
 		int regNo;

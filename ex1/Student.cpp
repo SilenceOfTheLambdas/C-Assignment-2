@@ -38,6 +38,16 @@ float Student::getMark(const string &module) const {
     }
 }
 
+bool Student::sortMinMarks(float mark) const
+{
+    for (auto & m : marks) {
+        if (m.second >= mark) {
+            return true;
+        }
+    }
+    return false;
+}
+
 ostream &operator<<(ostream &str, const Student &s) {
 /**
  * This function implements the << operator and allows for the output of student information.
@@ -51,9 +61,8 @@ ostream &operator<<(ostream &str, const Student &s) {
     float maxMark = 0;
     float averageMark = 0;
     /*******/
-//     TODO: Setup the output to it looks better
     if (s.marks.empty()) { // if the student has no marks
-        str << "Name: " << s.getName() << " " << to_string( s.getRegNo()) << "________Student has no marks________" << endl;
+        str << "Name: " << s.getName() << "\t" << to_string( s.getRegNo()) << "\tStudent has no marks" << endl;
     }
     else { // if the student does have at least 1 mark
         for (auto & mark : s.marks) {
@@ -61,8 +70,8 @@ ostream &operator<<(ostream &str, const Student &s) {
             if (mark.second > maxMark) maxMark = mark.second; // Max
             averageMark = s.marks.size() == 1 ? mark.second : (averageMark += mark.second) / s.marks.size(); // Average
         }
-        str << "Name: " << s.getName() << " " << to_string( s.getRegNo()) << " min: " << to_string(minMark)
-        << " max: " << to_string(maxMark) << " average: " << to_string(averageMark) << endl;
+        str << "Name: " << s.getName() << "\t" << to_string( s.getRegNo()) << "\tmin: " << setprecision(2) << to_string(minMark)
+        << "\tmax: " << to_string(maxMark) << "\taverage: " << to_string(averageMark) << endl;
     }
         
     return str; // return the ostream

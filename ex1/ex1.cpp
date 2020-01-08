@@ -10,13 +10,39 @@ vector<string> lines; // The lines of the file being read
 
 void createStudents();
 void updateMarks();
-void printModuleMarks(const vector<Student> &, float);
+void printModuleMarksMin(const vector<Student> &, float);
+void printModuleMarkMax(const vector<Student> &, string, float);
 
 int main()
 {
+    int userChoice = 0;
+    bool quit = false;
     createStudents();
     updateMarks();
-    printModuleMarks(students, 80);
+    while (!(quit)) {
+        cout << "Please choose from the following options: " << endl;
+        cout << "1: Display module marks (specifying minumum marks) " << endl << "2: Display module marks (specifying maximum marks) " << endl;
+        cout << "0: Quit" << endl;
+        cout << "> ";
+        cin >> userChoice;
+        
+        if (userChoice == 1) {
+            float userMark;
+            cout << "Please enter the minumum mark to sort by\n" << "> ";
+            cin >> userMark;
+            printModuleMarksMin(students, userMark);   
+        }
+        if (userChoice == 2) {
+            string moduleCode;
+            float userMark;
+            cout << "Please enter the module code\n" << "> ";
+            cin >> moduleCode;
+            cout << "Now please enter the maximum mark to sort by\n" << "> ";
+            cin >> userMark;
+            printModuleMarkMax(students, moduleCode, userMark);
+        }
+        if (userChoice == 0) return 0;
+    }
     
     return 0;
 }
@@ -113,13 +139,32 @@ void updateMarks() {
     }
 }
 
-void printModuleMarks(const vector<Student> &studs, float marks) {
+void printModuleMarksMin(const vector<Student> &studs, float mark) {
     /**
      * @param &studs a vector that contains a list of student objects
      * @param &marks a float attaining to the mark of that module
      */
     for (auto & student : studs) {
-        cout << student;
+        if (student.sortMinMarks(mark))
+            cout << student;
+        else cout << "No marks available";
+    }
+}
+
+void printModuleMarkMax(const vector<Student> &studs, string modNumber, float mark) {
+    /**
+     * @param &studs a reference to a collection of students
+     * @param modNumber the module number
+     * @param mark the maximum mark to print (will only print marks below of equal to)
+     */
+    for (auto & student : studs) {
+        try {
+            if (student.getMark(modNumber) <= mark)
+                cout << student.getName() << "\t" << modNumber << "\t" << student.getMark(modNumber) << endl;
+        } catch (NoMarkException e) {
+            cout << student.getName() << "\t" << modNumber << "\t" << "Student has no marks" << endl;
+        }
+        
     }
 }
 
