@@ -31,7 +31,12 @@ class Student: public Person
         
         /*************************/
         /*  Custom functions     */
-//         This function provides the functionality to sort marks
+        /**
+         * @brief A function that returns a value if a given mark is higher or equal to the students mark
+         * 
+         * @param mark p_mark: The minumum mark as specified by the user
+         * @return bool
+         */
         bool sortMinMarks(float mark) const;
         /*************************/
 

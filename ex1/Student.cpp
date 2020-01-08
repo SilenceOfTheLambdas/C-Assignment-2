@@ -2,6 +2,7 @@
  * @author Callum-James Smith (1804096)
  * @date 31st December 2019 @ 10:08:51pm
  */
+
 #include <iostream>
 #include <iomanip>
 #include "Student.h"
@@ -62,7 +63,7 @@ ostream &operator<<(ostream &str, const Student &s) {
     float averageMark = 0;
     /*******/
     if (s.marks.empty()) { // if the student has no marks
-        str << "Name: " << s.getName() << "\t" << to_string( s.getRegNo()) << "\tStudent has no marks" << endl;
+        str << setw(s.getName().length()) << left << s.getName() << setw(5) << "\t" << to_string( s.getRegNo()) << " Student has no marks" << endl;
     }
     else { // if the student does have at least 1 mark
         for (auto & mark : s.marks) {
@@ -70,8 +71,8 @@ ostream &operator<<(ostream &str, const Student &s) {
             if (mark.second > maxMark) maxMark = mark.second; // Max
             averageMark = s.marks.size() == 1 ? mark.second : (averageMark += mark.second) / s.marks.size(); // Average
         }
-        str << "Name: " << s.getName() << "\t" << to_string( s.getRegNo()) << "\tmin: " << setprecision(2) << to_string(minMark)
-        << "\tmax: " << to_string(maxMark) << "\taverage: " << to_string(averageMark) << endl;
+        str << setw(5) << left << to_string( s.getRegNo()) << "\t" << setw(s.getName().length()) << s.getName() << "\t"  << " MIN: " 
+        << setprecision(2) << fixed << setw(4) << minMark << " MAX: " << maxMark << " AVERAGE: " << averageMark << endl;
     }
         
     return str; // return the ostream
