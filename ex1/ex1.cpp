@@ -171,7 +171,7 @@ void printModuleMarkMax(const vector<Student> &studs, string modNumber, float ma
     for (auto & student : studs) {
         try {
             if (student.getMark(modNumber) <= mark)
-                cout << setw(student.getName().length()) << left << student.getName() << setw(5) << modNumber << setw(5) << student.getMark(modNumber) << endl;
+                cout << setw(student.getName().length()) << left << "\t" << student.getName() << setw(5) << "\t" << modNumber << setw(5) << "\t" << student.getMark(modNumber) << endl;
         } catch (NoMarkException e) {
             cout << student.getName() << "\t" << modNumber << "\t" << "Student has no marks" << endl;
         }
