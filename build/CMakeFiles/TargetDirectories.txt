@@ -1,0 +1,3 @@
+/home/csmith/Documents/c-assignment-2/build/CMakeFiles/rebuild_cache.dir
+/home/csmith/Documents/c-assignment-2/build/CMakeFiles/c_assignment_2.dir
+/home/csmith/Documents/c-assignment-2/build/CMakeFiles/edit_cache.dir
