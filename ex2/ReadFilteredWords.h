@@ -7,10 +7,10 @@
 #ifndef _READFWORDS_H
 #define _READFWORDS_H
 
-using namespace std;
-
 #include "ReadWords.h"
 #include <string>
+
+using namespace std;
 
 class ReadFilteredWords: public ReadWords
 {   public:
