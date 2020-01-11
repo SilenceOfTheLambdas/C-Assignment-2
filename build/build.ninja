@@ -47,26 +47,38 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # Order-only phony target for c_assignment_2
 
 build cmake_object_order_depends_target_c_assignment_2: phony
-build CMakeFiles/c_assignment_2.dir/ex1/ex1.cpp.o: CXX_COMPILER__c_assignment_2 ../ex1/ex1.cpp || cmake_object_order_depends_target_c_assignment_2
-  DEP_FILE = CMakeFiles/c_assignment_2.dir/ex1/ex1.cpp.o.d
+build CMakeFiles/c_assignment_2.dir/ex2/ReadFilteredWords.cpp.o: CXX_COMPILER__c_assignment_2 ../ex2/ReadFilteredWords.cpp || cmake_object_order_depends_target_c_assignment_2
+  DEP_FILE = CMakeFiles/c_assignment_2.dir/ex2/ReadFilteredWords.cpp.o.d
   FLAGS = -std=gnu++14
   INCLUDES = -I../ex1 -I../ex2
   OBJECT_DIR = CMakeFiles/c_assignment_2.dir
-  OBJECT_FILE_DIR = CMakeFiles/c_assignment_2.dir/ex1
-build CMakeFiles/c_assignment_2.dir/ex1/Person.cpp.o: CXX_COMPILER__c_assignment_2 ../ex1/Person.cpp || cmake_object_order_depends_target_c_assignment_2
-  DEP_FILE = CMakeFiles/c_assignment_2.dir/ex1/Person.cpp.o.d
-  FLAGS = -std=gnu++14
-  INCLUDES = -I../ex1 -I../ex2
-  OBJECT_DIR = CMakeFiles/c_assignment_2.dir
-  OBJECT_FILE_DIR = CMakeFiles/c_assignment_2.dir/ex1
-build CMakeFiles/c_assignment_2.dir/ex1/Student.cpp.o: CXX_COMPILER__c_assignment_2 ../ex1/Student.cpp || cmake_object_order_depends_target_c_assignment_2
-  DEP_FILE = CMakeFiles/c_assignment_2.dir/ex1/Student.cpp.o.d
-  FLAGS = -std=gnu++14
-  INCLUDES = -I../ex1 -I../ex2
-  OBJECT_DIR = CMakeFiles/c_assignment_2.dir
-  OBJECT_FILE_DIR = CMakeFiles/c_assignment_2.dir/ex1
+  OBJECT_FILE_DIR = CMakeFiles/c_assignment_2.dir/ex2
 build CMakeFiles/c_assignment_2.dir/ex2/ReadWords.cpp.o: CXX_COMPILER__c_assignment_2 ../ex2/ReadWords.cpp || cmake_object_order_depends_target_c_assignment_2
   DEP_FILE = CMakeFiles/c_assignment_2.dir/ex2/ReadWords.cpp.o.d
+  FLAGS = -std=gnu++14
+  INCLUDES = -I../ex1 -I../ex2
+  OBJECT_DIR = CMakeFiles/c_assignment_2.dir
+  OBJECT_FILE_DIR = CMakeFiles/c_assignment_2.dir/ex2
+build CMakeFiles/c_assignment_2.dir/ex2/filter1.cpp.o: CXX_COMPILER__c_assignment_2 ../ex2/filter1.cpp || cmake_object_order_depends_target_c_assignment_2
+  DEP_FILE = CMakeFiles/c_assignment_2.dir/ex2/filter1.cpp.o.d
+  FLAGS = -std=gnu++14
+  INCLUDES = -I../ex1 -I../ex2
+  OBJECT_DIR = CMakeFiles/c_assignment_2.dir
+  OBJECT_FILE_DIR = CMakeFiles/c_assignment_2.dir/ex2
+build CMakeFiles/c_assignment_2.dir/ex2/filter2.cpp.o: CXX_COMPILER__c_assignment_2 ../ex2/filter2.cpp || cmake_object_order_depends_target_c_assignment_2
+  DEP_FILE = CMakeFiles/c_assignment_2.dir/ex2/filter2.cpp.o.d
+  FLAGS = -std=gnu++14
+  INCLUDES = -I../ex1 -I../ex2
+  OBJECT_DIR = CMakeFiles/c_assignment_2.dir
+  OBJECT_FILE_DIR = CMakeFiles/c_assignment_2.dir/ex2
+build CMakeFiles/c_assignment_2.dir/ex2/filter3.cpp.o: CXX_COMPILER__c_assignment_2 ../ex2/filter3.cpp || cmake_object_order_depends_target_c_assignment_2
+  DEP_FILE = CMakeFiles/c_assignment_2.dir/ex2/filter3.cpp.o.d
+  FLAGS = -std=gnu++14
+  INCLUDES = -I../ex1 -I../ex2
+  OBJECT_DIR = CMakeFiles/c_assignment_2.dir
+  OBJECT_FILE_DIR = CMakeFiles/c_assignment_2.dir/ex2
+build CMakeFiles/c_assignment_2.dir/ex2/ex2.cpp.o: CXX_COMPILER__c_assignment_2 ../ex2/ex2.cpp || cmake_object_order_depends_target_c_assignment_2
+  DEP_FILE = CMakeFiles/c_assignment_2.dir/ex2/ex2.cpp.o.d
   FLAGS = -std=gnu++14
   INCLUDES = -I../ex1 -I../ex2
   OBJECT_DIR = CMakeFiles/c_assignment_2.dir
@@ -79,7 +91,7 @@ build CMakeFiles/c_assignment_2.dir/ex2/ReadWords.cpp.o: CXX_COMPILER__c_assignm
 #############################################
 # Link the executable c_assignment_2
 
-build c_assignment_2: CXX_EXECUTABLE_LINKER__c_assignment_2 CMakeFiles/c_assignment_2.dir/ex1/ex1.cpp.o CMakeFiles/c_assignment_2.dir/ex1/Person.cpp.o CMakeFiles/c_assignment_2.dir/ex1/Student.cpp.o CMakeFiles/c_assignment_2.dir/ex2/ReadWords.cpp.o
+build c_assignment_2: CXX_EXECUTABLE_LINKER__c_assignment_2 CMakeFiles/c_assignment_2.dir/ex2/ReadFilteredWords.cpp.o CMakeFiles/c_assignment_2.dir/ex2/ReadWords.cpp.o CMakeFiles/c_assignment_2.dir/ex2/filter1.cpp.o CMakeFiles/c_assignment_2.dir/ex2/filter2.cpp.o CMakeFiles/c_assignment_2.dir/ex2/filter3.cpp.o CMakeFiles/c_assignment_2.dir/ex2/ex2.cpp.o
   OBJECT_DIR = CMakeFiles/c_assignment_2.dir
   POST_BUILD = :
   PRE_LINK = :

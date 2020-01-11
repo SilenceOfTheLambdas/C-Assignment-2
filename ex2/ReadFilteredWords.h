@@ -9,8 +9,8 @@
 
 using namespace std;
 
-#include <string>
 #include "ReadWords.h"
+#include <string>
 
 class ReadFilteredWords: public ReadWords
 {   public:

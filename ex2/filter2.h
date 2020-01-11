@@ -9,6 +9,7 @@
 
 class filter2 : public ReadFilteredWords {
     public:
+        filter2(const char* fname): ReadFilteredWords(fname) {}
         bool filter(string word) override;
 };
 
