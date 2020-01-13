@@ -11,11 +11,11 @@ ReadFilteredWords* fw;
 
 int main() {
     
-    string filename;
+    string filename = "../../../ex2/gpl-3.0.txt";
     int choice = 0;
     //     ask the user for a filename
-    cout << "Please enter a filename: ";
-    cin >> filename;
+    /*cout << "Please enter a filename: ";
+    cin >> filename;*/
     
     cout << "Please choose a filter to use: " << endl;
     cout << "1: Filter 1 (string that contains at least one lower-case letter and no upper-case letters)\n"
@@ -33,10 +33,15 @@ int main() {
      * <int> The number of occurrences
      */
     static map<string, int> occurrence; // A map that stores the word that occurred, and it's number of occurrences
-    int i = 0;
-    while ((fw->getNextFilteredWord() != "")) {
-        occurrence.insert(make_pair(fw->getNextWord(), i+=1));
-        cout << fw->getNextFilteredWord() << endl;
+    string word = fw->getNextFilteredWord();
+    while (word != "") {
+        for (auto& w : occurrence) {
+            if (w.first == word)
+                w.second += 1;
+        }
+        occurrence.insert(make_pair(word, 1));
+        cout << word << endl;
+        word = fw->getNextFilteredWord();
     }
     
     string buffer;

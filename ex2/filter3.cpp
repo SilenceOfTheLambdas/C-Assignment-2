@@ -12,7 +12,7 @@
 * @param word : The word to be checked
 * @return bool true if its argument is a string that contains at least one letter and at least one punctuation character
 */
-bool filter3::filter(std::__cxx11::string word) {
+bool filter3::filter(std::string word) {
     for (auto & letter : word) {
         if (isalpha(letter) && ispunct(letter)) return true;
     }
